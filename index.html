@@ -1,1 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemfinder - Embrace the Quirks of Elegance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --emerald: #c2751e;
+            --gold: #D4AF37;
+            --off-white: #F8F5F2;
+            --charcoal: #333333;
+            --light-gray: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--charcoal);
+            background-color: var(--off-white);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--emerald);
+            margin-left: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-icons a {
+            color: var(--charcoal);
+            margin-left: 20px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .header-icons a:hover {
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+        
+        /* Collections Section */
+        .collections {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--emerald);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+        
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .collection-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .collection-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .collection-img {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .collection-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .collection-item:hover .collection-img img {
+            transform: scale(1.05);
+        }
+        
+        .collection-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .collection-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--emerald);
+        }
+        
+        .collection-info .btn {
+            margin-top: 15px;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--emerald);
+            margin-bottom: 20px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--emerald);
+            margin-top: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--emerald);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 30px;
+        }
+        
+        .footer-logo .logo-text {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3:after, .footer-contact h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .contact-info {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-img, .about-text {
+                flex: none;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                font-size: 24px;
+                color: var(--charcoal);
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- Replace with your actual logo image -->
+                
+                <span class="logo-text">GEMFINDER</span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Embrace the Quirks of Elegance</h1>
+            <p>Discover our unique collection of handcrafted jewelry that blends modern design with timeless beauty.</p>
+            <a href="#" class="btn">Explore Collections</a>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section class="collections">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Collections</h2>
+            </div>
+            
+            <div class="collections-grid">
+                <div class="collection-item">
+                    <div class="collection-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQje7dL7rpIEIOd0K4OEWrpJMSme-VXNVTHNw&s" alt="Emerald Collection">
+                    </div>
+                    <div class="collection-info">
+                        <h3>Emerald Elegance</h3>
+                        <p>A stunning collection featuring our finest emerald pieces.</p>
+                        <a href="#" class="btn">View Collection</a>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <div class="collection-img">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Diamond Collection">
+                    </div>
+                    <div class="collection-info">
+                        <h3>Diamond Dreams</h3>
+                        <p>Timeless diamond jewelry for every occasion.</p>
+                        <a href="#" class="btn">View Collection</a>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <div class="collection-img">
+                        <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gold Collection">
+                    </div>
+                    <div class="collection-info">
+                        <h3>Golden Moments</h3>
+                        <p>Warm gold pieces that capture life's special moments.</p>
+                        <a href="#" class="btn">View Collection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="data:image/jpeg;base64,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" alt="Dee, Gemfinder Designer">
+                </div>
+                <div class="about-text">
+                    <h2>About Gemfinder</h2>
+                    <h3>A Personal Touch</h3>
+                    <p>Founded in 2023, Gemfinder was born from Jone's passion for creating jewelry that tells a story. Each piece is carefully crafted to embody both elegance and individuality.</p>
+                    <p>We believe that true beauty lies in the unique quirks that make each person special. Our designs reflect this philosophy, blending traditional craftsmanship with contemporary aesthetics.</p>
+                    
+                    <div class="signature">— jones, Founder & Designer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="https://via.placeholder.com/30x30" alt="Gemfinder Logo">
+                        <span class="logo-text">GEMFINDER</span>
+                    </div>
+                    <p>Embrace the quirks of elegance with our handcrafted jewelry collections. Each piece tells a story of craftsmanship and beauty.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> sagana apartment somewhere</p>
+                        <p><i class="fas fa-phone-alt"></i> +254 708 666991</p>
+                        <p><i class="fas fa-envelope"></i> putyouremai@lhere.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Gemfinder. EST. 2023. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle (would need to be expanded for full functionality)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Parallax effect for hero section
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+            });
+        });
+    </script>
+</body>
+</html>
